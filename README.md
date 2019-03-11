@@ -27,18 +27,25 @@
 
 
 ## User stories
-As a user,
-So I can use Makersbnb everyday,
+As a user,  
+So I can use Makersbnb everyday,  
 I want to be able to sign up.
 
-As a user,
-So I can rent put my property,
+As a user,  
+So I can rent put my property,  
 I'd like to add a new space.
 
-As a user,
-So I can advertise my space,
+As a user,  
+So I can advertise my space,  
 I'd like to add name, description, price per night.
 
-As a user,
-So that I can go on Holiday,
-I'd like to book a space.
+As a user,  
+So that I can go on Holiday,  
+I'd like to book a space.  
+
+
+## Links
+
+- [node-postgres](https://node-postgres.com) is how JavaScript can interact with PostgreSQL
+- To learn how to build a basic [PostgreSQL and NodeJS](https://mherman.org/blog/postgresql-and-nodejs/) project
+- [Supervisor](https://github.com/isaacs/node-supervisor) offers code reloading, if needed
