@@ -1,1 +1,15 @@
-<title>Hello </title>
+<h1 id="header" value=""></h1>
+<body>
+  <input type="text" name="username" id="username" value="">
+  <input type="text" name="password" id="password" value="">
+  <button type="button" id="sign-in" name="button"></button>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    $( document ).ready(function(){
+
+    })
+    $("#sign-in").click(function(){
+      $("#header").html($("#username").val())
+    })
+  </script>
+</body>
