@@ -24,3 +24,21 @@
 - Their request to book a space is denied
 - A ‘chat’ functionality once a space has been booked, allowing users whose space-booking request has been confirmed to chat with the user that owns - that space
 - Basic payment implementation though Stripe.
+
+
+## User stories
+As a user,
+So I can use Makersbnb everyday,
+I want to be able to sign up.
+
+As a user,
+So I can rent put my property,
+I'd like to add a new space.
+
+As a user,
+So I can advertise my space,
+I'd like to add name, description, price per night.
+
+As a user,
+So that I can go on Holiday,
+I'd like to book a space.
