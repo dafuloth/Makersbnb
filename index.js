@@ -18,7 +18,18 @@ const createSpaceTable = "CREATE TABLE Spaces(SpaceId SERIAL PRIMARY KEY," +
               "PricePerNight DECIMAL(12,2)," +
               "OwnerId int FOREIGN KEY REFERENCES Users(UserId)")";
 
-
+const createBookingTable = "CREATE TABLE Bookings (BookingId SERIAL PRIMARY KEY," +
+              "SpaceId int not null," +
+              "OwnerId int not null," +
+              "GuestId int not null," +
+              "BookingStartDate DATE," +
+              "BookingEndDate DATE," +
+              "BookingPending BOOLEAN," +
+              "BookingConfirmed BOOLEAN," +
+              "CONSTRAINT FK_SpaceId  FOREIGN KEY (SpaceId) REFERENCES Spaces(SpaceId),"+
+              "CONSTRAINT FK_OwnerId FOREIGN KEY (OwnerId) REFERENCES Users(UserId),"+
+              "CONSTRAINT FK_GuestId FOREIGN KEY (GuestId ) REFERENCES Users(UserId));";
+              
 pool.query(createUsersTable, () => {
   pool.end()
 })
