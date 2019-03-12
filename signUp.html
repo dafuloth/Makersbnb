@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" placeholder="User Name" id="username" name="username" value="">
+    <input type="text" placeholder="email" id="email" name="email" value="">
+    <input type="text" placeholder="Password" id="password" name="password" value="">
+    <a href="index.html">
+    <button type="button" name="button" id="sign-up">Sign Up</button>
+    </a>
+  </body>
+  <script src="../src/user.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    $( document ).ready(function(){
+    })
+    $("#submit").click(function(){
+      var user = new User($("#username").val(),$("#email").val(),$("#password").val())
+      console.log(user.username)
+    })
+  </script>
+</html>
