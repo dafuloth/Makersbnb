@@ -25,8 +25,13 @@ var path = require('path')
 
 console.log('Anybody there?');
 console.log(__dirname)
-app.get('/', function(req, res) {
+app.get('/signUp', function(req, res) {
   res.sendFile(path.join(__dirname + '/signUp.html'));
 });
+
+app.post('/signUp', function(req, res) {
+  console.log(req.query.username)
+  res.end("hello")
+})
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

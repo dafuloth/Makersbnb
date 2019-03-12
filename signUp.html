@@ -5,21 +5,19 @@
     <title></title>
   </head>
   <body>
+    <form action="/signUp" method="post">
     <input type="text" placeholder="User Name" id="username" name="username" value="">
     <input type="text" placeholder="email" id="email" name="email" value="">
     <input type="text" placeholder="Password" id="password" name="password" value="">
-    <a href="index.html">
-    <button type="button" name="button" id="sign-up">Sign Up</button>
-    </a>
-  </body>
-  <script src="../src/user.js"></script>
+    <input type="submit" name="button" id="sign-up" value="sign up">
+  </form>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script>
+  <script type="text/javascript">
     $( document ).ready(function(){
     })
-    $("#submit").click(function(){
-      var user = new User($("#username").val(),$("#email").val(),$("#password").val())
-      console.log(user.username)
-    })
+     $("#sign-up").click(function(){
+     $.post(`/signUp?username=${$('#username').val()}&password`)
+     })
   </script>
+  </body>
 </html>
