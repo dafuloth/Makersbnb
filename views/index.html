@@ -1,0 +1,28 @@
+<body>
+  <h1 id="header" value=""></h1>
+  <input type="text" placeholder="username" name="username" id="username" value="">
+  <input type="text" placeholder="password" name="password" id="password" value="">
+  <button type="button" id="sign-in" name="button">Sign In</button>
+  <button type="button" id="add-space-input" name="button">Add Space</button>
+  <div class="" hidden="true" id = "Add-space-box">
+    test
+  </div>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    $( document ).ready(function(){
+
+    })
+    $("#sign-in").click(function(){
+      $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){
+        console.log("Hello David!")
+        if(res.login = true){
+          $("#header").html($("#username").val())
+        }
+      })
+
+    })
+    $("#add-space-input").click(function(){
+      $("#Add-space-box").removeprop("hidden")
+    })
+  </script>
+</body>

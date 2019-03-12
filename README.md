@@ -49,7 +49,8 @@ I'd like to book a space.
 
 ## Links
 
-- If needed, [install npm](https://npmjs.com/get-npm)
+
+- If needed, first install [npm](https://www.npmjs.com/get-npm)
 - [node-postgres](https://node-postgres.com) is how JavaScript can interact with PostgreSQL
 - To learn how to build a basic [PostgreSQL and NodeJS](https://mherman.org/blog/postgresql-and-nodejs/) project
 - [Supervisor](https://github.com/isaacs/node-supervisor) offers code reloading, if needed
