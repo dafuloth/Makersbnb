@@ -5,6 +5,7 @@ module.exports = {
         "node": true,
         "jasmine": true
     },
+    "plugins": ["jasmine"],
     "extends": "airbnb-base",
     "globals": {
         "Atomics": "readonly",
