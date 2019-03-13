@@ -67,16 +67,18 @@ exports.login = function(username, password) {
       }
     })
   })
-
 }
 
 
-
-function getAllSpaces() {
-  const getAllSpacesString= "SELECT spacename FROM spaces";
-
-  var  x = poolDBConnection.query(getAllSpacesString, (err, res) => {
-    console.log('spaces are ...',res.rows[0],' isnt that nice');
-    poolDBConnection.end();
-  });
-} //get_all_spaces
+exports.getAllSpaces = function() {
+  return new Promise(function(resolve, reject){
+    const getAllSpacesString= "SELECT * FROM spaces";
+      poolDBConnection.query(getAllSpacesString, function(err, res){
+        if(err){
+          reject(err)
+        }else{
+          resolve(res)
+        }
+      })
+    })
+  }
