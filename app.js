@@ -23,7 +23,7 @@ var router = express.Router();
 var path = require('path')
 var db = require('./src/databaseFunctions')
 var User = require('./src/user');
-var Space = require('./src/space');
+var Spaces = require('./src/spaces');
 
 console.log('Anybody there?');
 console.log(__dirname)
@@ -62,7 +62,7 @@ app.post('/addSpace', function(req, res){
 })
 
 app.get('/getAllSpaces', async function(req, res) {
-  bnbSpace = new Space()
-  res.send(await bnbSpace.getAllSpaces());
+  bnbSpaces = new Spaces()
+  res.send(await bnbSpaces.getAllSpaces());
 });
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
