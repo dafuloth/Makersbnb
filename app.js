@@ -31,6 +31,11 @@ console.log(__dirname)
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/views/index.html'))
 })
+
+app.get('/main.css', function(req, res) {
+  res.sendFile(__dirname + '/views/main.css');
+});
+
 app.get('/signUp', function(req, res) {
   res.sendFile(path.join(__dirname + '/views/signUp.html'));
 });
