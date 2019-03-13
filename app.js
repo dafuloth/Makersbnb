@@ -21,6 +21,7 @@ var fs = require('fs');
 var http = require('http');
 var router = express.Router();
 var path = require('path')
+var db = require('./src/databaseFunctions')
 
 
 console.log('Anybody there?');
@@ -30,11 +31,13 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/views/index.html'))
 })
 app.get('/signUp', function(req, res) {
-  res.sendFile(path.join(__dirname + '/views.signUp.html'));
+  res.sendFile(path.join(__dirname + '/views/signUp.html'));
 });
 
 app.post('/signUp', function(req, res) {
+  console.log('In signUP post');
   if(req.query.username != undefined){
+    console.log('user name s ',req.query.username);
     db.signUp(req.query.username, req.query.email ,req.query.password)
   }
   console.log(req.query.username)

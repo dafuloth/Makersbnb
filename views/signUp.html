@@ -10,14 +10,14 @@
     <input type="text" placeholder="email" id="email" name="email" value="">
 
     <input type="text" placeholder="Password" id="password" name="password" value="">
-    
+
     <input type="submit" name="button" id="sign-up" value="sign up">
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript">
     $( document ).ready(function(){
     })
      $("#sign-up").click(function(){
-     $.post(`localhost:8080/signUp?username=${$("#username").val()}&email=${$("#email").val()}&password=${$("#password").val()}`)
+     $.post(`/signUp?username=${$("#username").val()}&email=${$("#email").val()}&password=${$("#password").val()}`)
      })
   </script>
   </body>
