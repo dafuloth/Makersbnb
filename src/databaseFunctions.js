@@ -48,9 +48,29 @@ exports.signUp =  function (userName,email, password) {
   console.log(signUpUserString);
 
   poolDBConnection.query(signUpUserString, (err, res) => {
-    poolDBConnection.end();
+    // poolDBConnection.end();
   });
 } // signUp
+
+var login
+var rowCount
+exports.login = function(username, password) {
+  return new Promise(function(resolve, reject){
+    const loginString = "SELECT * FROM users WHERE userpassword ='"
+                        + password + "' AND username ='"
+                        + username + "';"
+    poolDBConnection.query(loginString, function(err, res){
+      if(err){
+        reject(err)
+      }else{
+        resolve(res)
+      }
+    })
+  })
+
+}
+
+
 
 function getAllSpaces() {
   const getAllSpacesString= "SELECT spacename FROM spaces";

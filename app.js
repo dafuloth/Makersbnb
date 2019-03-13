@@ -22,7 +22,7 @@ var http = require('http');
 var router = express.Router();
 var path = require('path')
 var db = require('./src/databaseFunctions')
-
+var User = require('./src/user');
 
 console.log('Anybody there?');
 console.log(__dirname)
@@ -35,17 +35,21 @@ app.get('/signUp', function(req, res) {
 });
 
 app.post('/signUp', function(req, res) {
-  console.log('In signUP post');
   if(req.query.username != undefined){
-    console.log('user name s ',req.query.username);
     db.signUp(req.query.username, req.query.email ,req.query.password)
   }
-  console.log(req.query.username)
   res.redirect('/')
 })
 
-app.post('/login', function(req, res){
-  res.send({login: true})
+app.post('/login', async function(req, res){
+  // console.log(db.login(req.query.username, req.query.password))
+  bnbUser = new User()
+  if(await bnbUser.login(req.query.username, req.query.password) == true){
+    res.send({login: true})
+  }else{
+    res.send({login: false})
+  }
+
 })
 
 app.post('/addSpace', function(req, res){
