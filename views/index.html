@@ -3,9 +3,12 @@
   <input type="text" placeholder="username" name="username" id="username" value="">
   <input type="text" placeholder="password" name="password" id="password" value="">
   <button type="button" id="sign-in" name="button">Sign In</button>
-  <button type="button" id="add-space-input" name="button">Add Space</button>
-  <div class="" hidden="true" id = "Add-space-box">
-    test
+  <button type="button" id="add-space-input" name="button">Add New Space</button>
+  <div class="" hidden id = "Add-space-box">
+    <input type="text" id="spaceName" placeholder="spaceName" value="">
+    <input type="text" id="spacePrice" placeholder="price" value="">
+    <input type="text" id="spaceDescription" placeholder="description" value="">
+    <button type="button" id="submitSpace" name="button">Add</button>
   </div>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script>
@@ -14,7 +17,6 @@
     })
     $("#sign-in").click(function(){
       $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){
-        console.log("Hello David!")
         if(res.login = true){
           $("#header").html($("#username").val())
         }
@@ -22,7 +24,12 @@
 
     })
     $("#add-space-input").click(function(){
-      $("#Add-space-box").removeprop("hidden")
+      $("#Add-space-box").removeAttr("hidden")
     })
+
+    $("#sumbitSpace").click(function(){
+      $.post(`/addSpace?name=${$("#spaceName").val()}&price=${$("#spacePrice").val()}&description=${$("#spaceDescription").val()}&owner=${$("#header").html()}`)
+    })
+
   </script>
 </body>
