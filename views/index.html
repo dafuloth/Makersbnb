@@ -54,7 +54,7 @@
       $("#Add-space-box").removeAttr("hidden")
     })
 
-    $("#sumbitSpace").click(function(){
+    $("#submitSpace").click(function(){
       $.post(`/addSpace?name=${$("#spaceName").val()}&price=${$("#spacePrice").val()}&description=${$("#spaceDescription").val()}&owner=${$("#header").html()}`)
     })
 

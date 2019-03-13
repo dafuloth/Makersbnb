@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <title></title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" type="text/css" href="main.css">
+      <title>MakersBnB by Team Random</title>
   </head>
   <body>
-    <input type="text" placeholder="User Name" id="username" name="username" value="">
+    <h1 id="pageTitle">Sign up to MakersBnB</h1>
+    <div class="vertical-center">
+    <input type="text" placeholder="User Name" id="username" name="username" value=""><br>
+    <input type="text" placeholder="email" id="email" name="email" value=""><br>
+    <input type="text" placeholder="Password" id="password" name="password" value=""><br>
 
-    <input type="text" placeholder="email" id="email" name="email" value="">
-
-    <input type="text" placeholder="Password" id="password" name="password" value="">
-
-    <input type="submit" name="button" id="sign-up" value="sign up">
+    <button type="button" name="button" id="sign-up" value="sign up"> Sign up </button>
+  </div>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript">
     $( document ).ready(function(){
     })
      $("#sign-up").click(function(){
-     $.post(`/signUp?username=${$("#username").val()}&email=${$("#email").val()}&password=${$("#password").val()}`)
+     $.post(`localhost:8080/signUp?username=${$("#username").val()}&email=${$("#email").val()}&password=${$("#password").val()}`)
      })
   </script>
   </body>
