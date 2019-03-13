@@ -17,7 +17,6 @@
     })
     $("#sign-in").click(function(){
       $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){
-        console.log("Hello David!")
         if(res.login = true){
           $("#header").html($("#username").val())
         }
