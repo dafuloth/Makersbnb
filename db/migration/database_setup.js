@@ -9,7 +9,7 @@ function cleanDatabase() {
   // const truncateUsersTable = "TRUNCATE Users";
   const cleanDatabaseTables = "  TRUNCATE users CASCADE;";
   pool.query(cleanDatabaseTables, () => {
-    pool.end();
+    // pool.end();
   });
 }
 
@@ -54,6 +54,7 @@ function buildUserTable() {
     }
 
   function buildDatabase() {
+    cleanDatabase();
     buildUserTable();
     buildSpacesTable();
     buildBookingsTable();

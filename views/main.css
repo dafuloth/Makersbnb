@@ -3,14 +3,16 @@ html {
 }
 
 body {
-  /* background-color: ; */
   height: 93%;
-  position: relative;
+  /* position: relative; */
   background-image: linear-gradient(lightblue, rgb(24, 141, 177));
-
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  text-align: center;
+  /* text-align: center; */
+  padding-left: 2em;
+
 }
+
+
 
 input, button {
   font-size: 1em;
@@ -24,6 +26,7 @@ input[type = "text"] {
 
 
 #pageTitle {
+  text-align: center;
   margin-top: 2em;
   font-size: 2em;
 }
@@ -32,14 +35,26 @@ input[type = "text"] {
   margin-bottom: 1em;
 }
 
-.vertical-center {
+.flex-container {
+  display: flex;
+}
+
+/* .vertical-center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -90%);
-}
+} */
 
 #spaceDescription {
-  min-width: 100px;
-  width: 70%;
+  padding: 0.5em;
+  height: 4em;
+  word-wrap: break-word;
+  resize: none;
+  font-size: 1em;
 }
+
+.sidebar {
+  margin-right: 2em;
+}
+

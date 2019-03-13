@@ -50,7 +50,7 @@ exports.signUp =  function (userName,email, password) {
   poolDBConnection.query(signUpUserString, (err, res) => {
     poolDBConnection.end();
   });
-} // signUp
+}; // signUp
 
 function getAllSpaces() {
   const getAllSpacesString= "SELECT spacename FROM spaces";
@@ -59,4 +59,4 @@ function getAllSpaces() {
     console.log('spaces are ...',res.rows[0],' isnt that nice');
     poolDBConnection.end();
   });
-} //get_all_spaces
+} // get_all_spaces
