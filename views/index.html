@@ -1,15 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <title>MakersBnB by Team Random</title>
+</head>
+
 <body>
+  <h1 id = "pageTitle">Welcome to MakersBnB</h1>
   <h1 id="header" value=""></h1>
-  <input type="text" placeholder="username" name="username" id="username" value="">
-  <input type="text" placeholder="password" name="password" id="password" value="">
-  <button type="button" id="sign-in" name="button">Sign In</button>
+  <div class="vertical-center">
+  <input type="text" placeholder="username" name="username" id="username" value=""><br>
+  <input type="text" placeholder="password" name="password" id="password" value=""><br>
+  <button type="button" id="sign-in" name="button">Sign In</button><br><br>
   <button type="button" id="add-space-input" name="button">Add New Space</button>
-  <div class="" hidden id = "Add-space-box">
+  <div class="add-space-div" hidden id = "Add-space-box">
     <input type="text" id="spaceName" placeholder="spaceName" value="">
     <input type="text" id="spacePrice" placeholder="price" value="">
-    <input type="text" id="spaceDescription" placeholder="description" value="">
+    <input type="text" id="spaceDescription" placeholder="description" value=""><br>
     <button type="button" id="submitSpace" name="button">Add</button>
   </div>
+</div>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script>
     $( document ).ready(function(){
@@ -33,3 +47,6 @@
 
   </script>
 </body>
+
+
+</html>
