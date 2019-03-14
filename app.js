@@ -1,3 +1,12 @@
+/* eslint-disable prefer-arrow-callback */
+/* eslint-disable func-names */
+/* eslint-disable quotes */
+/* eslint-disable prefer-template */
+/* eslint-disable no-unused-vars */
+/* eslint-disable vars-on-top */
+/* eslint-disable no-var */
+/* eslint-disable semi */
+
 // Server Software
 
 // run server
