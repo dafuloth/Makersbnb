@@ -50,7 +50,7 @@ exports.signUp =  function (userName,email, password) {
   poolDBConnection.query(signUpUserString, (err, res) => {
     // poolDBConnection.end();
   });
-} // signUp
+}; // signUp
 
 var login
 var rowCount
@@ -69,6 +69,13 @@ exports.login = function(username, password) {
   })
 }
 
+
+  var  x = poolDBConnection.query(getAllSpacesString, (err, res) => {
+    console.log('spaces are ...',res.rows[0],' isnt that nice');
+    poolDBConnection.end();
+  });
+} // get_all_spaces
+=======
 
 exports.getAllSpaces = function() {
   return new Promise(function(resolve, reject){
