@@ -22,16 +22,6 @@ Spaces.prototype.getAllSpaces = async function () {
       ))
     }, this)
     return this.spaces
-
-  // var result = db.login(this.username, this.userPassword)
-  // .then(function(result){
-  //   this.userEmail = result.rows[0].useremail
-  //   this.userId = result.rows[0].userid
-  //   console.log(result)
-  // })
-  // .catch(function(error){
-  //   console.log(error)
-  // })
 }
 
 module.exports = Spaces;

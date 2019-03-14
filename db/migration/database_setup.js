@@ -5,7 +5,7 @@ const pool = new Pool({
   connectionString: connectionString,
 });
 
-function cleanDatabase() {
+ function cleanDatabase() {
   // const truncateUsersTable = "TRUNCATE Users";
   const cleanDatabaseTables = "  TRUNCATE users CASCADE;";
   pool.query(cleanDatabaseTables, () => {
@@ -13,14 +13,13 @@ function cleanDatabase() {
   });
 }
 
-function buildUserTable() {
+ function buildUserTable() {
   const createUsersTable = "CREATE TABLE Users(UserId SERIAL PRIMARY KEY,"
-                          + "UserName VARCHAR(20) not null,"
+                          + "UserName VARCHAR(20) UNIQUE not null,"
                           + "UserPassword VARCHAR(10) not null,"
-                          + "UserEmail VARCHAR(40) not null)";
+                          + "UserEmail VARCHAR(40) UNIQUE not null)";
 
   pool.query(createUsersTable, () => {
-    // pool.end();
   });
 }
 
@@ -33,31 +32,29 @@ function buildUserTable() {
                   + "CONSTRAINT FK_OwnerId FOREIGN KEY (OwnerId) REFERENCES Users(UserId));";
 
     pool.query(createSpaceTable, () => {
-      // pool.end();
     });
   }
 
-    function buildBookingsTable() {
+  function buildBookingsTable() {
       const createBookingTable = "CREATE TABLE Bookings (BookingId SERIAL PRIMARY KEY,"
-                  + "SpaceId int not null,"
-                  + "GuestId int not null,"
-                  + "BookingStartDate DATE,"
-                  + "BookingEndDate DATE,"
-                  + "BookingPending BOOLEAN,"
-                  + "BookingConfirmed BOOLEAN,"
-                  + "CONSTRAINT FK_SpaceId  FOREIGN KEY (SpaceId) REFERENCES Spaces(SpaceId),"
-                  + "CONSTRAINT FK_GuestId FOREIGN KEY (GuestId ) REFERENCES Users(UserId));";
+                  +"SpaceId int not null,"
+                  +"GuestId int not null,"
+                  +"BookingStartDate DATE,"
+                  +"BookingEndDate DATE,"
+                  +"BookingPending BOOLEAN,"
+                  +"BookingConfirmed BOOLEAN,"
+                  +"CONSTRAINT FK_SpaceId  FOREIGN KEY (SpaceId) REFERENCES Spaces(SpaceId),"
+                  +"CONSTRAINT FK_GuestId FOREIGN KEY (GuestId ) REFERENCES Users(UserId));"
 
         pool.query(createBookingTable, () => {
-        // pool.end();
       });
     }
 
-  function buildDatabase() {
-    cleanDatabase();
-    buildUserTable();
-    buildSpacesTable();
-    buildBookingsTable();
+  async function buildDatabase() {
+    await cleanDatabase();
+    await buildUserTable();
+    await buildSpacesTable();
+    await buildBookingsTable();
     pool.end();
   };
 

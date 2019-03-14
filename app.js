@@ -45,7 +45,10 @@ app.post('/signUp', function(req, res) {
   if(req.query.username != undefined){
     db.signUp(req.query.username, req.query.email ,req.query.password)
   }
-  res.redirect('/')
+})
+
+app.post('/', function(req, res){
+    res.redirect('/')
 })
 
 app.post('/login', async function(req, res){
