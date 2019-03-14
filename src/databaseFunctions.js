@@ -68,19 +68,3 @@ exports.getAllSpaces = function() {
           })
         })
       }
-
-    exports.confirmBookedSpace = function(confirmedBookingId) {
-      return new Promise(function(resolve, reject){
-        const bookSpacePendingStr = "UPDATE bookings "
-                + "SET bookingConfirmed = true "
-                + "WHERE bookingId = "+confirmedBookingId+";"
-                console.log(bookSpacePendingStr);
-          poolDBConnection.query(bookSpacePendingStr, function(err, res){
-            if(err){
-              reject(err)
-            }else{
-              resolve(res)
-            }
-          })
-        })
-      }
