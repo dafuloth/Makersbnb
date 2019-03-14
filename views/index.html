@@ -29,18 +29,29 @@
       </div>
     </div>
 
-    <div id="spaces-container">
-      <p>TESTING SPACES CONTAINER</p>
+    <div id="spacesContainer">
     </div>
   </div>
-</div>
 
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script>
     $( document ).ready(function(){
       $.get('/getSpaces', function(res) {
-        
+        res.forEach(function(space){
+          var a = document.createElement('A')
+          var btn = document.createElement('BUTTON')
+          var t = document.createTextNode(space.spaceName)
+          a.setAttribute("href", `/space?spaceId=${space.spaceId}`)
+          btn.setAttribute("class","space-buttons")
+          btn.appendChild(t)
+          a.appendChild(btn)
+          spacesContainer.appendChild(a)
+
+        })
+
       })
+
+
     })
     $("#sign-in").click(function(){
       $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){

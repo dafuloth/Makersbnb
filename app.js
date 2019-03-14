@@ -37,6 +37,7 @@ app.get('/main.css', function(req, res) {
   res.sendFile(__dirname + '/views/main.css');
 });
 
+
 app.get('/signUp', function(req, res) {
   res.sendFile(path.join(__dirname + '/views/signUp.html'));
 });
@@ -70,7 +71,7 @@ app.post('/addSpace', function(req, res){
     req.query.owner)
 })
 
-app.get('/getAllSpaces', async function(req, res) {
+app.get('/getSpaces', async function(req, res) {
   bnbSpaces = new Spaces()
   res.send(await bnbSpaces.getAllSpaces());
 });

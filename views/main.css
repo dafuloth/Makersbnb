@@ -58,3 +58,8 @@ input[type = "text"] {
   margin-right: 2em;
 }
 
+.space-buttons {
+  margin: 1em;
+  width: 10em;
+  height: 10em;
+}
