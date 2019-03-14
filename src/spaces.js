@@ -24,4 +24,11 @@ Spaces.prototype.getAllSpaces = async function () {
     return this.spaces
 }
 
+Spaces.prototype.requestSpace = function(spaceID) {
+  var matchingSpaces = this.spaces.find(function (space) {
+    return space.spaceID === spaceID;
+  })
+  return matchingSpaces;
+}
+
 module.exports = Spaces;

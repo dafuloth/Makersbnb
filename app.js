@@ -25,6 +25,8 @@ var path = require('path')
 var db = require('./src/databaseFunctions')
 var User = require('./src/user');
 var Spaces = require('./src/spaces');
+var space;
+var bnbSpaces;
 
 console.log('Anybody there?');
 console.log(__dirname)
@@ -76,3 +78,13 @@ app.get('/getSpaces', async function(req, res) {
   res.send(await bnbSpaces.getAllSpaces());
 });
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+app.get('/space', function(req, res) {
+  space = req.query.spaceid
+  res.sendFile(path.join(__dirname + '/views/space.html'))
+})
+
+app.get('/spaceinfo', function(req, res) {
+  console.log("Hello")
+  res.send(bnbSpaces.requestSpace(space))
+})
