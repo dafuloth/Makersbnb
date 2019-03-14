@@ -48,15 +48,44 @@ exports.signUp =  function (userName,email, password) {
   console.log(signUpUserString);
 
   poolDBConnection.query(signUpUserString, (err, res) => {
-    poolDBConnection.end();
+    // poolDBConnection.end();
   });
 }; // signUp
 
-function getAllSpaces() {
-  const getAllSpacesString= "SELECT spacename FROM spaces";
+var login
+var rowCount
+exports.login = function(username, password) {
+  return new Promise(function(resolve, reject){
+    const loginString = "SELECT * FROM users WHERE userpassword ='"
+                        + password + "' AND username ='"
+                        + username + "';"
+    poolDBConnection.query(loginString, function(err, res){
+      if(err){
+        reject(err)
+      }else{
+        resolve(res)
+      }
+    })
+  })
+}
+
 
   var  x = poolDBConnection.query(getAllSpacesString, (err, res) => {
     console.log('spaces are ...',res.rows[0],' isnt that nice');
     poolDBConnection.end();
   });
 } // get_all_spaces
+=======
+
+exports.getAllSpaces = function() {
+  return new Promise(function(resolve, reject){
+    const getAllSpacesString= "SELECT * FROM spaces";
+      poolDBConnection.query(getAllSpacesString, function(err, res){
+        if(err){
+          reject(err)
+        }else{
+          resolve(res)
+        }
+      })
+    })
+  }
