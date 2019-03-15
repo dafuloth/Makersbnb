@@ -2,21 +2,27 @@ const dbConnection = require(`./databaseConnection`);
 const poolDBConnection = dbConnection.pool;
 
 var signUp;
-exports.signUp =  function (userName,email, password) {
-  const signUpUserStr = "INSERT INTO users (username, userpassword, useremail) "
-                   + "VALUES ('"+userName+"','"+ password+"','"+ email+"');"
-  poolDBConnection.query(signUpUserStr, (err, res) => {
+
+exports.signUp = function (userName, email, password) {
+  const signUpUserString = "INSERT INTO users (username, userpassword, useremail) "
+                   + "VALUES ('" + userName + "','" + password + "','" + email + "');"
+
+  poolDBConnection.query(signUpUserString, (err, res) => {
+
   });
 }; // signUp
 
 var login
-exports.login = function(username, password) {
-  return new Promise(function(resolve, reject){
-    const loginStr = "SELECT * FROM users WHERE userpassword ='"
+
+var rowCount
+exports.login = function (username, password) {
+  return new Promise(function (resolve, reject) {
+    const loginString = "SELECT * FROM users WHERE userpassword ='"
                         + password + "' AND username ='"
                         + username + "';"
-    poolDBConnection.query(loginStr, function(err, res){
-      if(err){
+    poolDBConnection.query(loginString, function (err, res) {
+      if (err) {
+
         reject(err)
       } else {
         resolve(res)
@@ -25,6 +31,46 @@ exports.login = function(username, password) {
   })
 }
 
+
+
+exports.getAllSpaces = function () {
+  return new Promise(function (resolve, reject) {
+    const getAllSpacesString = "SELECT * FROM spaces";
+    poolDBConnection.query(getAllSpacesString, function (err, res) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+}
+
+exports.addSpace = async function(ownerId, spaceName, spaceDescription, spacePrice) {
+  return new Promise(function (resolve, reject) {
+    const addSpaceString = "insert into spaces ( ownerid, spacename, spacedescription, pricepernight) values ('"
+                            + ownerId + "','"
+                            + spaceName + "','"
+                            + spaceDescription + "','"
+                            + spacePrice + "');"
+      poolDBConnection.query(addSpaceString)
+   })
+}
+
+exports.findSpace = async function(name) {
+  var space = new Promise(function(resolve, reject) {
+    const findSpaceString = "SELECT * FROM spaces WHERE spacename ='" + name + "';"
+    poolDBConnection.query(findSpaceString, function(err, res){
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+  return space.rows[0]
+}
+=======
 exports.getAllSpaces = function() {
   return new Promise(function(resolve, reject){
     const getAllSpacesStr = "SELECT * FROM spaces";
@@ -68,3 +114,4 @@ exports.getAllSpaces = function() {
           })
         })
       }
+

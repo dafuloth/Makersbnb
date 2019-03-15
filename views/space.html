@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Book a space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+
+</head>
+<body>
+  <h1 id="pageTitle">Book {Name of Space}</h1>
+
+  <div class="flex-container">
+    <div class="sidebar">
+    <input type="text" placeholder="username" name="username" id="username" value=""><br>
+    <input type="text" placeholder="password" name="password" id="password" value=""><br>
+    <button type="button" id="sign-in" name="button">Sign In</button><br><br>
+
+    </div>
+
+    <div id="spacesContainer">
+
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+    $( document ).ready(function(){
+        $.get('/spaceinfo?', function(res){
+          console.log(res)
+          $("#pageTitle").html(res.spaceName)
+        })
+      })
+
+    $("#sign-in").click(function(){
+      $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){
+        if(res.login = true){
+          $("#header").html($("#username").val())
+        }
+      })
+
+    })
+   
+
+  </script>
+
+</body>
+</html>

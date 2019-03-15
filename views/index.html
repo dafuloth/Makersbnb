@@ -10,54 +10,76 @@
 </head>
 
 <body>
-
+  
   <h1 id = "pageTitle">Welcome to MakersBnB</h1>
   <h1 id="header" value=""></h1>
   <div class="flex-container">
     <div class="sidebar">
-    <input type="text" placeholder="username" name="username" id="username" value=""><br>
-    <input type="text" placeholder="password" name="password" id="password" value=""><br>
-    <button type="button" id="sign-in" name="button">Sign In</button><br><br>
-    <button type="button" id="add-space-input" name="button">Add New Space</button>
+      <input type="text" placeholder="username" name="username" id="username" value=""><br>
+      <input type="text" placeholder="password" name="password" id="password" value=""><br>
+      <button type="button" id="sign-in" name="button">Sign In</button>
+      <a href="/signUp">
+        <button type="button" id="signUp" name="button">Sign Up</button>
+      </a>
+      <br><br>
+      <button type="button" id="add-space-input" name="button">Add New Space</button>
       <div class="add-space-div" hidden id = "Add-space-box">
         <input type="text" id="spaceName" placeholder="spaceName" value=""><br>
         <input type="text" id="spacePrice" placeholder="price" value=""><br>
-        <!-- <input type="text" id="spaceDescription" placeholder="description" value=""> -->
         <textarea name="spaceDescription" id="spaceDescription" placeholder="description" cols="17" rows="10"></textarea>
         <br>
         <button type="button" id="submitSpace" name="button">Add</button>
       </div>
     </div>
-
-    <div id="spaces-container">
-      <p>TESTING SPACES CONTAINER</p>
+    
+    <div id="spacesContainer">
     </div>
   </div>
-</div>
-
+  
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script>
     $( document ).ready(function(){
-      $.get('/getSpaces', function(res) {
-        
-      })
+      loadButtons()
     })
+
     $("#sign-in").click(function(){
       $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){
         if(res.login = true){
           $("#header").html($("#username").val())
         }
       })
-
+      
     })
     $("#add-space-input").click(function(){
       $("#Add-space-box").removeAttr("hidden")
     })
-
+    
     $("#submitSpace").click(function(){
       $.post(`/addSpace?name=${$("#spaceName").val()}&price=${$("#spacePrice").val()}&description=${$("#spaceDescription").val()}&owner=${$("#header").html()}`)
+      $("#spacesContainer").empty()
+      loadButtons()
     })
 
+    loadButtons = function() {
+      $.get('/getSpaces', function(res) {
+        res.forEach(function(space){
+          addButton(space)
+        })
+      })
+    }
+
+    addButton = function(space){
+      var a = document.createElement('A')
+      var btn = document.createElement('BUTTON')
+      var t = document.createTextNode(space.spaceName)
+      a.setAttribute("href", `/space?spaceId=${space.spaceId}`)
+      a.setAttribute("id", "space" + space.spaceName + "Link")
+      btn.setAttribute("class","space-buttons")
+      btn.setAttribute("id", "space" +space.spaceName)
+      btn.appendChild(t)
+      a.appendChild(btn)
+      spacesContainer.appendChild(a)
+    }
   </script>
 </body>
 

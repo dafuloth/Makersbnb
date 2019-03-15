@@ -26,8 +26,8 @@ const pool = new Pool({
   function buildSpacesTable() {
     const createSpaceTable = "CREATE TABLE Spaces(SpaceId SERIAL PRIMARY KEY,"
                   + "OwnerId int not null,"
-                  + "SpaceName VARCHAR(20) not null,"
-                  + "SpaceDescription VARCHAR(50) not null,"
+                  + "SpaceName VARCHAR(20) UNIQUE not null,"
+                  + "SpaceDescription VARCHAR(200) not null,"
                   + "PricePerNight DECIMAL(12,2),"
                   + "CONSTRAINT FK_OwnerId FOREIGN KEY (OwnerId) REFERENCES Users(UserId));";
 
