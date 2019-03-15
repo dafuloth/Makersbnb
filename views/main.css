@@ -59,3 +59,18 @@ input[type = "text"] {
   width: 10em;
   height: 10em;
 }
+
+.spaceInfoContent {
+  padding-top: 1em;
+  text-align: center;
+  font-size: 2em;
+  color: blueviolet;
+}
+
+.maincontainer {
+  min-width: 70%;
+}
+
+#spaceDescText {
+  font-style: italic;
+}

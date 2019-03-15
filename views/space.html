@@ -19,8 +19,9 @@
 
     </div>
 
-    <div id="spacesContainer">
-
+    <div id="spacesContainer" class="maincontainer">
+      <p id="spaceDescText" class="spaceInfoContent"></p>
+      <p id="spacePPN" class="spaceInfoContent"></p>
     </div>
   </div>
 
@@ -30,6 +31,8 @@
         $.get('/spaceinfo?', function(res){
           console.log(res)
           $("#pageTitle").html(res.spaceName)
+          $("#spaceDescText").html(res.spaceDescription)
+          $("#spacePPN").html('£' + res.pricePerNight)
         })
       })
 
