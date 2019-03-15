@@ -91,11 +91,11 @@ app.get('/getSpaces', async function (req, res) {
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 app.get('/space', function (req, res) {
-  space = req.query.spaceid;
+  space = req.query.spaceId;
+  console.log(space)
   res.sendFile(path.join(__dirname + '/views/space.html'));
 });
 
 app.get('/spaceinfo', function (req, res) {
-  console.log("Hello");
   res.send(bnbSpaces.requestSpace(space));
 });

@@ -28,12 +28,10 @@
   <script>
     $( document ).ready(function(){
         $.get('/spaceinfo?', function(res){
+          console.log(res)
           $("#pageTitle").html(res.spaceName)
         })
       })
-
-
-    })
 
     $("#sign-in").click(function(){
       $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){

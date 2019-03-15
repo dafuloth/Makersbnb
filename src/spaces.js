@@ -24,14 +24,10 @@ Spaces.prototype.getAllSpaces = async function () {
     return this.spaces
 }
 
-Spaces.prototype.requestSpace = function(spaceID) {
-  console.log(this.spaces.filter(isSpaceID))
-
+Spaces.prototype.requestSpace = function (chosenId) {
+  return this.spaces.find( function (space) {
+    return space.spaceId == chosenId
+  })
 }
 
-isSpaceID = function(space){
-  if(space.spaceID == spaceID){
-    return space
-  }
-}
 module.exports = Spaces;
