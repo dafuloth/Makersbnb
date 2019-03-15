@@ -5,11 +5,14 @@ const pool = new Pool({
   connectionString: connectionString,
 });
 
+function createDatabase() {
+ const cleanDatabaseTables = " CREATE Database teamrandom_bnb;";
+ pool.query(cleanDatabaseTables, () => {
+ });
+}
  function cleanDatabase() {
-  // const truncateUsersTable = "TRUNCATE Users";
   const cleanDatabaseTables = "  TRUNCATE users CASCADE;";
   pool.query(cleanDatabaseTables, () => {
-    // pool.end();
   });
 }
 
@@ -51,6 +54,7 @@ const pool = new Pool({
     }
 
   async function buildDatabase() {
+    await createDatabase();
     await cleanDatabase();
     await buildUserTable();
     await buildSpacesTable();

@@ -46,11 +46,19 @@ As a user,
 So that I can go on Holiday,  
 I'd like to book a space.  
 
+## Installation
+ - Install PostgresSQL https://node-postgres.com
+ - Install npm and nodejs https://www.npmjs.com/get-npm
+ - Create the database using the database_setup.js program
 
-## Links
+## Testing
+ - Install cypress https://www.cypress.io/
+ - Start the server node app.js
+ - Run all of the tests
 
-
-- If needed, first install [npm](https://www.npmjs.com/get-npm)
-- [node-postgres](https://node-postgres.com) is how JavaScript can interact with PostgreSQL
-- To learn how to build a basic [PostgreSQL and NodeJS](https://mherman.org/blog/postgresql-and-nodejs/) project
-- [Supervisor](https://github.com/isaacs/node-supervisor) offers code reloading, if needed
+## The Tech Stack
+Database: Node-postgres, based on the theory that we already knew it and its straight forward
+Model : NodeJS, because we need to interact dynamically with the database and the controller
+Controller: Express, JavaScript - Express was a simple way of creating a JS based web server and it was new to the team
+View: HTML, CSS, jQuery - Industry standard and highly flexible
+Feature Testing: Cypress
