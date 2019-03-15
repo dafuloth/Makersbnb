@@ -70,7 +70,7 @@ exports.findSpace = async function(name) {
   })
   return space.rows[0]
 }
-=======
+
 exports.getAllSpaces = function() {
   return new Promise(function(resolve, reject){
     const getAllSpacesStr = "SELECT * FROM spaces";
@@ -114,4 +114,3 @@ exports.getAllSpaces = function() {
           })
         })
       }
-
