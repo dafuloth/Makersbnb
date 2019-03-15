@@ -49,8 +49,14 @@ I'd like to book a space.
 
 ## Links
 
-
 - If needed, first install [npm](https://www.npmjs.com/get-npm)
 - [node-postgres](https://node-postgres.com) is how JavaScript can interact with PostgreSQL
 - To learn how to build a basic [PostgreSQL and NodeJS](https://mherman.org/blog/postgresql-and-nodejs/) project
 - [Supervisor](https://github.com/isaacs/node-supervisor) offers code reloading, if needed
+
+## The Tech Stack
+Database: Node-postgres, based on the theory that we already knew it and its straight forward
+Model : NodeJS, because we need to interact dynamically with the database and the controller
+Controller: Express, JavaScript - Express was a simple way of creating a JS based web server and it was new to the team
+View: HTML, CSS, jQuery - Industry standard and highly flexible
+Feature Testing: Cypress 

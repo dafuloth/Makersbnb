@@ -1,0 +1,8 @@
+getAllSpacesSpec.js:  })
+getAllSpacesSpec.js:})
+signUpAndInSpec.js:  })
+signUpAndInSpec.js:})
+getAllSpacesSpec.js:  it('Has buttons showing all the spaces',function(){
+getAllSpacesSpec.js:describe('Get all spaces',function(){
+signUpAndInSpec.js:  it('signs up and sign in', function(){
+signUpAndInSpec.js:describe('Sign up', function() {
