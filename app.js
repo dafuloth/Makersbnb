@@ -38,6 +38,7 @@ const Spaces = require('./src/spaces');
 
 let space;
 let bnbSpaces;
+let bnbUser;
 
 console.log('Anybody there?');
 console.log(__dirname);
@@ -75,13 +76,25 @@ app.post('/login', async function (req, res) {
   }
 });
 
-app.post('/addSpace', function (req, res) {
-  db.addSpace(
+app.post('/addSpace', async function (req, res) {
+  try {
+    await db.addSpace(
+    bnbUser.userId,
     req.query.name,
     req.query.description,
     req.query.price,
-    req.query.owner,
-  );
+    );
+  }catch{
+
+  };
+  try {
+    var test = await db.findSpace(req.query.name)
+    console.log(test)
+
+  } catch {
+
+  }
+  res.send()
 });
 
 app.get('/getSpaces', async function (req, res) {

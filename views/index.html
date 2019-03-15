@@ -39,25 +39,9 @@
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script>
     $( document ).ready(function(){
-      $.get('/getSpaces', function(res) {
-        res.forEach(function(space){
-          var a = document.createElement('A')
-          var btn = document.createElement('BUTTON')
-          var t = document.createTextNode(space.spaceName)
-          a.setAttribute("href", `/space?spaceId=${space.spaceId}`)
-          a.setAttribute("id", "space" + space.spaceName + "Link")
-          btn.setAttribute("class","space-buttons")
-          btn.setAttribute("id", "space" +space.spaceName)
-          btn.appendChild(t)
-          a.appendChild(btn)
-          spacesContainer.appendChild(a)
-
-        })
-
-      })
-
-
+      loadButtons()
     })
+
     $("#sign-in").click(function(){
       $.post(`/login?username=${$("#username").val()}&password=${$("#password").val()}`, function(res){
         if(res.login = true){
@@ -72,8 +56,30 @@
 
     $("#submitSpace").click(function(){
       $.post(`/addSpace?name=${$("#spaceName").val()}&price=${$("#spacePrice").val()}&description=${$("#spaceDescription").val()}&owner=${$("#header").html()}`)
+      $("#spacesContainer").empty()
+      loadButtons()
     })
 
+    loadButtons = function() {
+      $.get('/getSpaces', function(res) {
+        res.forEach(function(space){
+          addButton(space)
+        })
+      })
+    }
+
+    addButton = function(space){
+      var a = document.createElement('A')
+      var btn = document.createElement('BUTTON')
+      var t = document.createTextNode(space.spaceName)
+      a.setAttribute("href", `/space?spaceId=${space.spaceId}`)
+      a.setAttribute("id", "space" + space.spaceName + "Link")
+      btn.setAttribute("class","space-buttons")
+      btn.setAttribute("id", "space" +space.spaceName)
+      btn.appendChild(t)
+      a.appendChild(btn)
+      spacesContainer.appendChild(a)
+    }
   </script>
 </body>
 
