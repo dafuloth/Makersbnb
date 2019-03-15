@@ -1,24 +1,19 @@
-/* eslint-disable prefer-arrow-callback */
-/* eslint-disable func-names */
-/* eslint-disable quotes */
-/* eslint-disable prefer-template */
-/* eslint-disable no-unused-vars */
-/* eslint-disable vars-on-top */
-/* eslint-disable no-var */
-/* eslint-disable semi */
 const dbConnection = require(`./databaseConnection`);
 const poolDBConnection = dbConnection.pool;
 
 var signUp;
+
 exports.signUp = function (userName, email, password) {
   const signUpUserString = "INSERT INTO users (username, userpassword, useremail) "
                    + "VALUES ('" + userName + "','" + password + "','" + email + "');"
 
   poolDBConnection.query(signUpUserString, (err, res) => {
+
   });
 }; // signUp
 
 var login
+
 var rowCount
 exports.login = function (username, password) {
   return new Promise(function (resolve, reject) {
@@ -27,6 +22,7 @@ exports.login = function (username, password) {
                         + username + "';"
     poolDBConnection.query(loginString, function (err, res) {
       if (err) {
+
         reject(err)
       } else {
         resolve(res)
@@ -34,6 +30,7 @@ exports.login = function (username, password) {
     })
   })
 }
+
 
 
 exports.getAllSpaces = function () {
@@ -73,3 +70,48 @@ exports.findSpace = async function(name) {
   })
   return space.rows[0]
 }
+=======
+exports.getAllSpaces = function() {
+  return new Promise(function(resolve, reject){
+    const getAllSpacesStr = "SELECT * FROM spaces";
+      poolDBConnection.query(getAllSpacesStr, function(err, res){
+        if(err){
+          reject(err)
+        }else{
+          resolve(res)
+        }
+      })
+    })
+  }
+
+  exports.bookSpacePending = function(spaceId, guestId, startDate, endDate) {
+    return new Promise(function(resolve, reject){
+      const bookSpacePendingStr = "INSERT INTO bookings (spaceId, guestId, bookingstartDate, bookingendDate, bookingConfirmed) "
+                       + "VALUES ('"+spaceId+"','"+ guestId+"','"+ startDate+"','"+ endDate+"', false);"
+                       console.log(bookSpacePendingStr);
+        poolDBConnection.query(bookSpacePendingStr, function(err, res){
+          if(err){
+            reject(err)
+          }else{
+            resolve(res)
+          }
+        })
+      })
+    }
+
+    exports.confirmBookedSpace = function(bookingId) {
+      return new Promise(function(resolve, reject){
+        const bookSpacePendingStr = "UPDATE bookings "
+                + "SET bookingConfirmed = true "
+                + "WHERE bookingId = bookingId);"
+                console.log(bookSpacePendingStr);
+          poolDBConnection.query(bookSpacePendingStr, function(err, res){
+            if(err){
+              reject(err)
+            }else{
+              resolve(res)
+            }
+          })
+        })
+      }
+
