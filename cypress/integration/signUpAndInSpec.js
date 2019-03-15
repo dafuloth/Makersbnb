@@ -1,6 +1,7 @@
 describe('Sign up', function() {
   it('signs up and sign in', function(){
-    cy.visit('/signUp')
+    cy.visit('/')
+    cy.get('#signUp').click()
     cy.get('#username').type("steve")
     cy.get('#email').type("username@email.com")
     cy.get('#password').type("abc123")
