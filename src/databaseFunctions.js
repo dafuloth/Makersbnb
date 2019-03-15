@@ -48,3 +48,28 @@ exports.getAllSpaces = function () {
     })
   })
 }
+
+exports.addSpace = async function(ownerId, spaceName, spaceDescription, spacePrice) {
+  return new Promise(function (resolve, reject) {
+    const addSpaceString = "insert into spaces ( ownerid, spacename, spacedescription, pricepernight) values ('"
+                            + ownerId + "','"
+                            + spaceName + "','"
+                            + spaceDescription + "','"
+                            + spacePrice + "');"
+      poolDBConnection.query(addSpaceString)
+   })
+}
+
+exports.findSpace = async function(name) {
+  var space = new Promise(function(resolve, reject) {
+    const findSpaceString = "SELECT * FROM spaces WHERE spacename ='" + name + "';"
+    poolDBConnection.query(findSpaceString, function(err, res){
+      if (err) {
+        reject(err)
+      } else {
+        resolve(res)
+      }
+    })
+  })
+  return space.rows[0]
+}
