@@ -57,8 +57,8 @@ I'd like to book a space.
  - Run all of the tests
 
 ## The Tech Stack
-Database: Node-postgres, based on the theory that we already knew it and its straight forward
-Model : NodeJS, because we need to interact dynamically with the database and the controller
-Controller: Express, JavaScript - Express was a simple way of creating a JS based web server and it was new to the team
-View: HTML, CSS, jQuery - Industry standard and highly flexible
-Feature Testing: Cypress
+**Database:** Node-postgres, based on the theory that we already knew it and its straight forward  
+**Model:** NodeJS, because we need to interact dynamically with the database and the controller  
+**Controller:** Express, JavaScript - Express was a simple way of creating a JS based web server and it was new to the team  
+**View:** HTML, CSS, jQuery - Industry standard and highly flexible  
+**Feature Testing:** Cypress  
